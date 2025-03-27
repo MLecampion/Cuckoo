@@ -68,7 +68,6 @@ func commands(
     derivedSourcesDir: URL
 ) throws -> [Command] {
     let configurationURL = projectDir.appending(path: "Cuckoofile.toml")
-    let outputURL = derivedSourcesDir.appending(component: "GeneratedMocks.swift")
 
     return [
         .buildCommand(
@@ -78,7 +77,6 @@ func commands(
             environment: [
                 "PROJECT_DIR": projectDir.path(),
                 "DERIVED_SOURCES_DIR": derivedSourcesDir.path(),
-                "CUCKOO_OVERRIDE_OUTPUT": outputURL.path(),
             ],
             inputFiles: [configurationURL] + sources,
             outputFiles: [outputURL]
