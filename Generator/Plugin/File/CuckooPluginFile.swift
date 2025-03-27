@@ -78,8 +78,7 @@ func commands(
                 "PROJECT_DIR": projectDir.path(),
                 "DERIVED_SOURCES_DIR": derivedSourcesDir.path(),
             ],
-            inputFiles: [configurationURL] + sources,
-            outputFiles: [outputURL]
+            inputFiles: [configurationURL] + sources
         )
     ]
 }
