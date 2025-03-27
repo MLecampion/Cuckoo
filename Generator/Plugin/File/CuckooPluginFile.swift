@@ -68,7 +68,8 @@ func commands(
     derivedSourcesDir: URL
 ) throws -> [Command] {
     let configurationURL = projectDir.appending(path: "Cuckoofile.toml")
-
+    let outputURL = projectDir.appending(path: "Tests/ConnectedLockerTestsCommon/Mocks/GeneratedMocksCL.swift")
+    print("MLE : \(outputURL)")
     return [
         .buildCommand(
             displayName: "Run Cuckoonator (single file)",
@@ -77,8 +78,10 @@ func commands(
             environment: [
                 "PROJECT_DIR": projectDir.path(),
                 "DERIVED_SOURCES_DIR": derivedSourcesDir.path(),
+                "CUCKOO_OVERRIDE_OUTPUT": outputURL.path(),
             ],
-            inputFiles: [configurationURL] + sources
+            inputFiles: [configurationURL] + sources,
+            outputFiles: [outputURL]
         )
     ]
 }
